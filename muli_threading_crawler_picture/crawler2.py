@@ -44,27 +44,6 @@ def download(img_url, img_name, img_class):
         except:
             print('savefail\t%s' % img_url)
 
-
-# def get_img_url_generate():
-#     imgs=[]
-#     with open(json_path,'r') as f:
-#         setting=js.load(f)
-#         images=setting["images"]
-#         for img in images:
-#             imgs=[]
-#             img_url=img['url']
-#             img_id=img['id']
-#             img_class=img['class']
-#             imgs.append(img_url)
-#             imgs.append(img_id)
-#             imgs.append(img_class)
-#             try:
-#                 if img_url:
-#                     yield imgs
-#             except:
-#                 break
-	
-
 lock = threading.Lock()
 def loop(imgs, label):
     print ('thread %s is running...' % threading.current_thread().name)
@@ -84,14 +63,6 @@ def loop(imgs, label):
         except:
             print ('exceptfail\t%s' % img_url)
     print ('thread %s is end...' % threading.current_thread().name)
-
-
-# imgs = get_img_url_generate()
-
-
-
-
-
 
 
 def get_onepage_urls(onepageurl):
@@ -118,38 +89,6 @@ def get_onepage_urls(onepageurl):
     return pic_urls, nextpage_url
 
 
-# def down_pic(pic_urls, label):
-#     """给出图片链接列表, 下载所有图片"""
-
-#     for i, pic_url in enumerate(pic_urls):
-
-#         try:
-#             pic = requests.get(pic_url, timeout=15)
-#             dirpath1 = os.path.join(dirpath,str(label))
-#             os.mkdir(dirpath1)
-#             img_name ='fimg_' + str(i) + '.jpg'
-#             filename = os.path.join(dirpath1, img_name)
-
-#             with open(filename, 'wb') as f:
-#                 f.write(pic.content)
-#                 print('成功下载第%s张图片: %s' % (str(i + 1), str(pic_url)))
-#             txtName = 'fimg_' + str(i) + '.txt'
-#             writeTxt(dirpath1, txtName, img_name, label)
-#         except Exception as e:
-#             print('下载第%s张图片时失败: %s' % (str(i + 1), str(pic_url)))
-#             print(e)
-#             continue
-
-
-# def writeTxt(dirpath, txtName, img_name, label):
-#     filename = os.path.join(dirpath, txtName)
-#     file = open(filename, 'w')
-#     line = img_name + ', ' + str(label)
-#     file.write(line)
-#     file.close()
-#     return True
-
-
 if __name__ == '__main__':
 
     
@@ -158,7 +97,7 @@ if __name__ == '__main__':
     if not os.path.exists(out_dir):
         os.makedirs(out_dir)
 
-    with open('f:/code_repository/crawler/name2.txt', encoding='utf-8') as f:
+    with open('./name2.txt', encoding='utf-8') as f:
         line_list = [k.strip() for k in f.readlines()]  # 用 strip()移除末尾的空格
 
     labels = []

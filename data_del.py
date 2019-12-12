@@ -4,11 +4,12 @@ import os
 import numpy as np
 from PIL import Image
 
-#将警告变为异常可以捕捉
+# Change the warning to Error, so that we could use try...except... to capture the warning
 import warnings
 warnings.filterwarnings("error", category=UserWarning)
-##由于网上爬虫爬的图，有好多是错误的会有EXIF警告，需要处理，
-#还有一些图像打不开因此需要处理
+
+# 1、Using the images downloaded from internet maybe get some EXIF warning, so we must delete these pictures.
+# 2、some pictures is damaged, so we alseo need to delete these images.
 
 path = '../datasets'
 filelists = os.listdir(path)
@@ -19,5 +20,4 @@ try:
     img = Image.open(img_path)
 except:
     os.remove(img_path)
-    os.remove(os.path.join(path, _file.split('.')[0] + '.txt'))
     print(img_path)

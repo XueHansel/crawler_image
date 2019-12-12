@@ -18,6 +18,8 @@ In name.txt file, Each line will include one label.
 
 ## data_del.py
 
-If you have download many pictures, some pictues maybe be damaged. When you use this picture by PIL, may be you'll get EXF warinig.
+If you have download many pictures, some pictues maybe be damaged. When you use this picture by PIL, may be you'll get EXIF warinig.
 
 So you must delete this damaged image.
+
+### The chinese tutorial was posted in https://zhuanlan.zhihu.com/p/97060258
